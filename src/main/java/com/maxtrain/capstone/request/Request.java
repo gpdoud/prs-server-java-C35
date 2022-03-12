@@ -31,17 +31,17 @@ public class Request {
 	@JoinColumn(name="userId")
 	private User user;
 	
-//	@JsonManagedReference
-//	@OneToMany(mappedBy="requestline")
-//	private List<Requestline> requestlines;
-//
-//	public List<Requestline> getRequestlines() {
-//		return requestlines;
-//	}
-//
-//	public void setRequestlines(List<Requestline> requestlines) {
-//		this.requestlines = requestlines;
-//	}
+	@JsonManagedReference
+	@OneToMany(mappedBy="request")
+	private List<Requestline> requestlines;
+
+	public List<Requestline> getRequestlines() {
+		return requestlines;
+	}
+
+	public void setRequestlines(List<Requestline> requestlines) {
+		this.requestlines = requestlines;
+	}
 	
 	public int getId() {
 		return id;
