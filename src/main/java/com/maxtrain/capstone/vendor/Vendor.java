@@ -1,6 +1,11 @@
 package com.maxtrain.capstone.vendor;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.maxtrain.capstone.product.Product;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(name="UIDX_code", columnNames={"code"}))
@@ -16,6 +21,8 @@ public class Vendor {
 	private String address;
 	@Column(length=30, nullable=false)
 	private String city;
+	@Column(length=2, nullable=false)
+	private String state;
 	@Column(length=5, nullable=false)
 	private String zip;
 	@Column(length=12, nullable=true)
@@ -23,6 +30,18 @@ public class Vendor {
 	@Column(length=255, nullable=true)
 	private String email;
 	
+	@JsonManagedReference
+	@OneToMany(mappedBy="vendor")
+	private List<Product> products;
+	
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
 	public Vendor() {}
 
 	public int getId() {
