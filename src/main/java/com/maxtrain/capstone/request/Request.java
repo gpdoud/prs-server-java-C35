@@ -1,8 +1,11 @@
 package com.maxtrain.capstone.request;
 
+import java.util.List;
+
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.maxtrain.capstone.requestline.Requestline;
 import com.maxtrain.capstone.user.User;
 
 @Entity
@@ -23,7 +26,7 @@ public class Request {
 	@Column(columnDefinition="decimal(9,2) not null default 0")
 	private double total;
 	
-	@JsonBackReference
+//	@JsonBackReference
 	@ManyToOne(optional=false)
 	@JoinColumn(name="userId")
 	private User user;
@@ -31,7 +34,15 @@ public class Request {
 //	@JsonManagedReference
 //	@OneToMany(mappedBy="requestline")
 //	private List<Requestline> requestlines;
-
+//
+//	public List<Requestline> getRequestlines() {
+//		return requestlines;
+//	}
+//
+//	public void setRequestlines(List<Requestline> requestlines) {
+//		this.requestlines = requestlines;
+//	}
+	
 	public int getId() {
 		return id;
 	}
@@ -95,14 +106,6 @@ public class Request {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-//	public List<Requestline> getRequestlines() {
-//		return requestlines;
-//	}
-//
-//	public void setRequestlines(List<Requestline> requestlines) {
-//		this.requestlines = requestlines;
-//	}
 
 	public Request() {}
 	

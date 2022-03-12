@@ -1,8 +1,13 @@
 package com.maxtrain.capstone.product;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.maxtrain.capstone.request.Request;
+import com.maxtrain.capstone.requestline.Requestline;
 import com.maxtrain.capstone.vendor.Vendor;
 
 @Entity
@@ -34,6 +39,18 @@ public class Product {
 	public void setVendor(Vendor vendor) {
 		this.vendor = vendor;
 	}
+	
+//	@JsonManagedReference
+//	@OneToMany(mappedBy="requestline")
+//	private List<Requestline> requestlines;
+//
+//	public List<Requestline> getRequestlines() {
+//		return requestlines;
+//	}
+//
+//	public void setRequestlines(List<Requestline> requestlines) {
+//		this.requestlines = requestlines;
+//	}
 
 	public Product() {}
 

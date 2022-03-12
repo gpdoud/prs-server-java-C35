@@ -1,11 +1,6 @@
 package com.maxtrain.capstone.user;
 
-import java.util.List;
-
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.maxtrain.capstone.request.Request;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(name="UIDX_username", columnNames={"username"}))
@@ -28,17 +23,17 @@ public class User {
 	private boolean isReviewer;
 	private boolean isAdmin;
 	
-	@JsonManagedReference
-	@OneToMany(mappedBy="user")
-	private List<Request> requests;
-	
-	public List<Request> getRequests() {
-		return requests;
-	}
-
-	public void setRequests(List<Request> requests) {
-		this.requests = requests;
-	}
+//	@JsonManagedReference
+//	@OneToMany(mappedBy="user")
+//	private List<Request> requests;
+//	
+//	public List<Request> getRequests() {
+//		return requests;
+//	}
+//
+//	public void setRequests(List<Request> requests) {
+//		this.requests = requests;
+//	}
 
 	public User() {}
 

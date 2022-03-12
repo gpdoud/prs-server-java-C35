@@ -14,12 +14,12 @@ public class Requestline {
 	private int id;
 	private int quantity;
 	
-	@JsonBackReference
+//	@JsonBackReference
 	@ManyToOne(optional=false)
 	@JoinColumn(name="requestId")
 	private Request request;
 
-	@JsonBackReference
+//	@JsonBackReference
 	@ManyToOne(optional=false)
 	@JoinColumn(name="productId")
 	private Product product;
