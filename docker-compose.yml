@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  #service 1: definition of mysql database
+  db:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Train@MAX
+      - MYSQL_USER=root
+    port:
+      - "3306:3306"
+    restart: always
+
+  prs-server-java:
+    image: prs-server-java
+    container_name: mysql
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    restart: always
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/prs0?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Train@MAX
